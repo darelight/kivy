@@ -68,9 +68,14 @@
 #			include <OpenGL/gl.h>
 #			include <OpenGL/glext.h>
 #		else
-#			define GL_GLEXT_PROTOTYPES
-#			include <GL/gl.h>
-#			include <GL/glext.h>
+#           ifdef __ANDROID__
+#			    include <GLES2/gl2.h>
+#			    include <GLES2/gl2ext.h>
+#           else
+#			    define GL_GLEXT_PROTOTYPES
+#			    include <GL/gl.h>
+#			    include <GL/glext.h>
+#           endif
 #		endif
 #		define GL_SHADER_BINARY_FORMATS					0x8DF8
 #		define GL_RGB565								0x8D62
